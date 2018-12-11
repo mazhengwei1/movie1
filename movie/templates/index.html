@@ -1,0 +1,36 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+    <title>
+    城南花正开
+    </title>
+    <link rel="stylesheet" href="index.css">
+{% endblock %}
+{% block content %}
+
+
+    <audio controls autoplay="autoplay" loop="loop" style="display:none;">
+        <source src="/static/wmda.mp3" type="audio/mpeg"/>
+    </audio>
+    <h1 style=(text-align:"center",)>最新热门电影展示</h1>
+    {% for i in obj %}
+    <div>
+        <h2>{{ i.title }}</h2>
+            <div id="daoyan">导演:&nbsp;{{ i.daoyan }}</div>
+            <div id="zhuyao">
+                演员:
+                {% if i.zhuyao %}{{ i.zhuyao }}
+                {% else %}不详
+                {% endif %}
+            </div>
+            <span id="score">评分：{{ i.score }}分</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="country">国家：{{ i.country }}</span>
+            <br>
+            <span id="republish_date">上映日期：{{ i.republish_date }}</span>
+            <span id="runtime">时长：{{ i.runtime }}分钟</span>
+            <p id="summary">{{ i.summary }}</p>
+
+    </div>
+    {% endfor %}
+{% endblock %}
